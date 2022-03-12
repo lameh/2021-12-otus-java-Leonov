@@ -1,4 +1,6 @@
-rootProject.name = 'otusJava'
+rootProject.name = '2021-12-otus-java-Leonov'
 include 'hw01-gradle'
 
 include 'hw04-generics'
+
+include 'hw06-reflections'
