@@ -43,7 +43,7 @@ public class TestLauncher {
             System.out.println("Class has no test methods");
         }
 
-        Map<String, Exception> result = getResultEntity(methodsTest, methodsBefore, methodsAfter, clazz, clazzName);
+        Map<String, Exception> result = getTestingEntity(methodsTest, methodsBefore, methodsAfter, clazz, clazzName);
         int failed = 0;
         Iterator tempRes = result.entrySet().iterator();
 
@@ -61,7 +61,7 @@ public class TestLauncher {
         System.out.println("Total tests: " + methodsTest.size());
     }
 
-    private static HashMap<String, Exception> getResultEntity(List<String> methodsTest, List<String> methodsBefore, List<String> methodsAfter, Class<?> clazz, String clazzName) {
+    private static HashMap<String, Exception> getTestingEntity(List<String> methodsTest, List<String> methodsBefore, List<String> methodsAfter, Class<?> clazz, String clazzName) {
         HashMap<String, Exception> result = new HashMap();
 
         for(int k = 0; k < methodsTest.size(); k++) {
