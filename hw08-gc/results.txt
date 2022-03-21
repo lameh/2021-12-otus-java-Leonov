@@ -1,0 +1,40 @@
+Macbook Air M1, шаг 128 Мб
+
+До оптимизации:
+Xms=xmx=256m -> OutOfMemoryError: Java heap space
+Xms=xmx=384m -> spend msec:14803, sec:14
+Xms=xmx=512m -> spend msec:9535, sec:9
+Xms=xmx=640m -> spend msec:9344, sec:9
+Xms=xmx=768m -> spend msec:7942, sec:7
+Xms=xmx=896m -> spend msec:7918, sec:7
+Xms=xmx=1024m -> spend msec:7326, sec:7
+Xms=xmx=1152m -> spend msec:6556, sec:6
+Xms=xmx=1280m -> spend msec:6702, sec:6
+Xms=xmx=1408m -> spend msec:6800, sec:6
+Xms=xmx=1536m -> spend msec:5979, sec:5
+Xms=xmx=1664m -> spend msec:5924, sec:5
+Xms=xmx=1792m -> spend msec:5394, sec:5
+Xms=xmx=1920m -> spend msec:5537, sec:5
+Xms=xmx=2048m -> spend msec:5580, sec:5
+Возможно архитектура ARM не даёт однозначной картины, но я бы выбрал 768 Мб оптимальным объёмом памяти.
+
+Для уменьшения потребляемой памяти заменил оболочку Integer на примитив int
+
+После оптимизации:
+Xms=xmx=256m -> spend msec:3208, sec:3
+Xms=xmx=384m -> spend msec:1665, sec:1
+Xms=xmx=512m -> spend msec:1931, sec:1
+Xms=xmx=640m -> spend msec:1472, sec:1
+Xms=xmx=768m -> spend msec:1966, sec:1
+Xms=xmx=896m -> spend msec:1598, sec:1
+Xms=xmx=1024m -> spend msec:1500, sec:1
+Xms=xmx=1152m -> spend msec:1692, sec:1
+Xms=xmx=1280m -> spend msec:1660, sec:1
+Xms=xmx=1408m -> spend msec:1639, sec:1
+Xms=xmx=1536m -> spend msec:1562, sec:1
+Xms=xmx=1664m -> spend msec:1683, sec:1
+Xms=xmx=1792m -> spend msec:1771, sec:1
+Xms=xmx=1920m -> spend msec:1678, sec:1
+Xms=xmx=2048m -> spend msec:1711, sec:1
+
+После оптимизации время выполнения значительно уменьшилось. Оптимальный размер стал 384 Мб.
