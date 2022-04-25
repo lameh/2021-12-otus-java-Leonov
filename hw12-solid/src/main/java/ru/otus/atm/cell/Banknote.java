@@ -1,5 +1,7 @@
 package ru.otus.atm.cell;
 
+import java.util.Arrays;
+
 public enum Banknote {
     FIVE_THOUSAND(5000),
     THOUSAND(1000),
