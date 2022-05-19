@@ -29,17 +29,6 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
         this.entitySQLMetaData = entitySQLMetaData;
         this.entityClassMetaData = entityClassMetaData;
     }
-
-    private T createInstance(List<Field> fields, Constructor<?> constructor, ResultSet resultSet) throws SQLException, ReflectiveOperationException {
-        Object o = constructor.newInstance();
-
-        for (var f : fields) {
-            f.setAccessible(true);
-            f.set(o, resultSet.getObject(f.getName()));
-        }
-        return (T) o;
-    }
-
     @Override
     public Optional<T> findById(Connection connection, long id) {
         final Constructor<?> constructor = entityClassMetaData.getConstructor();
@@ -108,5 +97,15 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
         } catch (Exception ex) {
             throw new DataTemplateException(ex);
         }
+    }
+
+    private T createInstance(List<Field> fields, Constructor<?> constructor, ResultSet resultSet) throws SQLException, ReflectiveOperationException {
+        Object o = constructor.newInstance();
+
+        for (var f : fields) {
+            f.setAccessible(true);
+            f.set(o, resultSet.getObject(f.getName()));
+        }
+        return (T) o;
     }
 }
