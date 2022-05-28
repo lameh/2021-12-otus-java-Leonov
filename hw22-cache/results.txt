@@ -1,0 +1,29 @@
+При запуске с 1000 элементов:
+18:36:47.825 [main] INFO ru.otus.HomeWork - With cache usage, msec:0
+18:52:09.200 [main] INFO ru.otus.HomeWork - Without cache usage, msec:1667
+
+При запуске с 2500 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 3
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 3955
+
+При запуске с 5000 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 5
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 7819
+
+При запуске с 7500 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 7
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 11898
+
+При запуске с 10000 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 9
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 15487
+
+При запуске с 20000 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 17
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 31218
+
+При запуске с 30000 элементов:
+00:15:21.520 [main] INFO ru.otus.HomeWork - With cache usage, msec: 13
+00:16:42.383 [main] INFO ru.otus.HomeWork - Without cache usage, msec: 45764
+
+Выигрыш от использования кэша виден всегда, полагаю, на arm-архитектуре это более заметно.
