@@ -12,6 +12,4 @@ public interface DBServiceClient {
     Optional<Client> getClient(Long id);
 
     List<Client> findAll();
-
-    long cacheSize();
 }

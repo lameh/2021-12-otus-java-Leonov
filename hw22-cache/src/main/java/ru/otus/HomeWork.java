@@ -3,6 +3,8 @@ package ru.otus;
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.otus.cachehw.HwCache;
+import ru.otus.cachehw.MyCache;
 import ru.otus.core.repository.executor.DbExecutorImpl;
 import ru.otus.core.sessionmanager.TransactionRunnerJdbc;
 import ru.otus.crm.datasource.DriverManagerDataSource;
@@ -31,8 +33,9 @@ public class HomeWork {
         EntityClassMetaData<Client> entityClassMetaDataClient = new EntityClassMetaDataImpl<>(Client.class);
         EntitySQLMetaData entitySQLMetaDataClient = new EntitySQLMetaDataImpl(entityClassMetaDataClient);
         var dataTemplateClient = new DataTemplateJdbc<Client>(dbExecutor, entitySQLMetaDataClient, entityClassMetaDataClient); //реализация DataTemplate, универсальная
+        HwCache<String, Client> cache = new MyCache<>();
 
-        var dbServiceClient = new DbServiceClientImpl(transactionRunner, dataTemplateClient);
+        var dbServiceClient = new DbServiceClientImpl(transactionRunner, dataTemplateClient, cache);
 
         List<Long> clientIds = new ArrayList<>();
 

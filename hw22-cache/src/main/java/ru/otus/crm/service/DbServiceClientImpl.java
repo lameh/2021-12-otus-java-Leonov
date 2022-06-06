@@ -3,8 +3,6 @@ package ru.otus.crm.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.otus.cachehw.HwCache;
-import ru.otus.cachehw.HwListener;
-import ru.otus.cachehw.MyCache;
 import ru.otus.core.repository.DataTemplate;
 import ru.otus.core.sessionmanager.TransactionRunner;
 import ru.otus.crm.model.Client;
@@ -20,15 +18,11 @@ public class DbServiceClientImpl implements DBServiceClient {
 
     private final HwCache<String, Client> cache;
 
-    public DbServiceClientImpl(TransactionRunner transactionRunner, DataTemplate<Client> dataTemplate) {
+    public DbServiceClientImpl(TransactionRunner transactionRunner, DataTemplate<Client> dataTemplate,
+                               HwCache<String, Client> cache) {
         this.transactionRunner = transactionRunner;
         this.dataTemplate = dataTemplate;
-        this.cache = new MyCache<>(List.of(new HwListener<String, Client>() {
-            @Override
-            public void notify(String key, Client value, String action) {
-                log.info("Cache action: {}, key: {}, value: {}", action, key, value);
-            }
-        }));
+        this.cache = cache;
     }
 
     @Override
@@ -48,8 +42,9 @@ public class DbServiceClientImpl implements DBServiceClient {
 
     @Override
     public Optional<Client> getClient(Long id) {
-        if (cache.get(String.valueOf(id)) != null) {
-            return cache.get(String.valueOf(id));
+        var res = cache.get(String.valueOf(id));
+        if (res != null) {
+            return res;
         }
            return transactionRunner.doInTransaction(connection -> {
                         var clientOptional = dataTemplate.findById(connection, id);
@@ -69,12 +64,15 @@ public class DbServiceClientImpl implements DBServiceClient {
     public List<Client> findAll() {
         return transactionRunner.doInTransaction(connection -> {
             var clientList = dataTemplate.findAll(connection);
+            var iterator = clientList.listIterator();
+            while (iterator.hasNext()) {
+                cache.put(iterator.next().getId().toString(), iterator.next());
+            }
             log.info("clientList:{}", clientList);
             return clientList;
        });
     }
 
-    @Override
     public long cacheSize() {
         return cache.cacheSize();
     }

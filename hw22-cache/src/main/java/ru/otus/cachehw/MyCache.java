@@ -21,13 +21,21 @@ public class MyCache<K, V> implements HwCache<K, V> {
     @Override
     public void put(K key, V value) {
         cache.put(key, value);
-//        listeners.forEach(l -> l.notify(key, value, "put in cache"));
+        try {
+            listeners.forEach(l -> l.notify(key, value, "put in cache"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void remove(K key) {
         V value = cache.remove(key);
-        listeners.forEach(l -> l.notify(key, value, "remove from cache"));
+        try {
+            listeners.forEach(l -> l.notify(key, value, "remove from cache"));
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
     }
 
     @Override
