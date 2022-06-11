@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Clients</title>
+</head>
+
+<body>
+<h3>Create new client</h3>
+<form id="newClientForm" style="width: 300px;">
+    <p>
+        <label>Name</label>
+        <input type="text" id="new_name" value="test" placeholder="Enter name" required autofocus>
+    </p>
+    <p>
+        <label>Login</label>
+        <input type="text" id="new_login" value="test" placeholder="Enter login" required>
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" id="new_password" value="test" placeholder="Enter password" required>
+    </p>
+    <p>
+        <label>Address</label>
+        <input type="text" id="new_address" value="text" placeholder="Enter address">
+    </p>
+    <p>
+        <label>Phone number</label>
+        <input type="text" id="new_phone" value="text" placeholder="Enter phone number">
+    </p>
+</form>
+<button onclick="createNewClient()">Create</button>
+
+<h3>List of clients</h3>
+<button onclick="getAllClients()">List</button>
+<table border = "1">
+    <thead id="tHead"></thead>
+    <tbody id="tBody"></tbody>
+</table>
+
+<script src="/js/getAllClients.js"></script>
+<script src="/js/createNewClient.js"></script>
+</body>
+</html>
