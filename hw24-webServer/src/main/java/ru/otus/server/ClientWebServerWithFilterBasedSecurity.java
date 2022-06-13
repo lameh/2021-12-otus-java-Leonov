@@ -87,7 +87,7 @@ public class ClientWebServerWithFilterBasedSecurity implements ClientWebServer {
     private ServletContextHandler initServletContextHandler() {
         ServletContextHandler servletContextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         servletContextHandler.addServlet(new ServletHolder(new AllClientsShowApiServlet(clientDao, gson)), "/api/clients");
-        servletContextHandler.addServlet(new ServletHolder(new ClientServlet(clientDao, templateProcessor)), "/admin");
+        servletContextHandler.addServlet(new ServletHolder(new ClientServlet(templateProcessor)), "/admin");
         servletContextHandler.addServlet(new ServletHolder(new ClientCreateApiServlet(clientDao, gson)), "/api/client");
         return servletContextHandler;
     }
