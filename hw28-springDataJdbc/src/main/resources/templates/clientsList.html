@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all clients</title>
+</head>
+<body>
+<br/><br/>
+
+<h3>Клиенты:</h3>
+<table class="clients">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phones</th>
+    </tr>
+    </thead>
+    <tbody id="tBody" >
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.id}">1</td>
+        <td th:text="${client.name}">John Doe</td>
+        <td th:text="${client.address.street}"></td>
+        <td th:each="phone : ${client.phones}">
+            <th:block th:text="${phone.number}"></th:block>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Create new client</h3>
+<form id = "newClientForm" style = "width: 500px;">
+    <p>
+        <label>Client name</label>
+        <input type="text" id="new_name" value="client_1" placeholder="Client name" required autofocus>
+    </p>
+    <p>
+        <label>Address</label>
+        <input type="text" id="new_address" value="address_1" placeholder="Address">
+    </p>
+    <p>
+        <label>Home Phone</label>
+        <input type="text" id="new_phone_home" value="495XXXXXXX" placeholder="Home phone number">
+    </p>
+    <p>
+        <label>Mobile Phone</label>
+        <input type="text" id="new_phone_mobile" value="9XXXXXXXXX" placeholder="Mobile phone number">
+    </p>
+</form>
+<button onclick="createNewClient()">Create</button>
+
+<script src="/js/createNewClient.js"></script>
+<script src="/js/getAllClients.js"></script>
+</body>
+</html>
