@@ -2,6 +2,7 @@ plugins {
     id 'idea'
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id 'com.github.johnrengelman.shadow' version '6.1.0' apply false
+    id "com.google.protobuf" version "0.8.19" apply false
 }
 
 idea {
@@ -27,6 +28,8 @@ allprojects {
         dependencies {
             imports {
                 mavenBom("org.springframework.boot:spring-boot-dependencies:2.6.4")
+                mavenBom "org.testcontainers:testcontainers-bom:1.17.2"
+                mavenBom "io.grpc:grpc-bom:1.47.0"
             }
             dependency("com.google.guava:guava:${Versions.guava}")
             dependency("org.openjdk.jmh:jmh-core:${Versions.jmh}")
@@ -35,6 +38,8 @@ allprojects {
             dependency("org.ow2.asm:asm-commons:${Versions.asm}")
             dependency("org.glassfish:javax.json:${Versions.glassfishJson}")
             dependency("com.google.protobuf:protobuf-java-util:${Versions.protobuf}")
+            dependency "com.google.protobuf:protobuf-java:${Versions.protobufVersion}"
+            dependency "com.google.protobuf:protoc:${Versions.protobufVersion}"
 
             dependency("org.testcontainers:junit-jupiter:${Versions.testcontainers}")
             dependency("org.testcontainers:postgresql:${Versions.testcontainers}")
@@ -59,6 +64,7 @@ allprojects {
             dependency("org.springdoc:springdoc-openapi-ui:${Versions.springDocOpenapiUi}")
 
             dependency("com.google.code.findbugs:jsr305:${Versions.jsr305}")
+            dependency "org.apache.tomcat:annotations-api:6.0.53"
         }
     }
 
