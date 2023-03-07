@@ -4,7 +4,7 @@ public interface Versions {
     String jol = "0.16";
     String asm = "9.2";
     String glassfishJson = "1.1.4";
-    String protobuf = "3.19.4";
+    String protobuf = "3.21.2";
 
     String testcontainers = "1.15.3";
 
@@ -31,5 +31,7 @@ public interface Versions {
     String grpc = "1.44.1";
     String errorProneAnnotations = "2.11.0";
     String tomcatAnnotationsApi = "6.0.53";
+
+    String protobufVersion = "3.21.2";
 
 }
