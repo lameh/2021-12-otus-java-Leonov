@@ -16,4 +16,7 @@ include 'hw28-springDataJdbc'
 include 'hw31-executors'
 include 'hw32-concurrentCollections'
 include 'hw33-multiprocess'
+include 'hw37-webflux'
+include 'hw37-webflux:client-service'
+include 'hw37-webflux:datastore-service'
 
