@@ -2,6 +2,7 @@ plugins {
     id 'idea'
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id 'com.github.johnrengelman.shadow' version '6.1.0' apply false
+    id "org.springframework.boot" version "3.0.1" apply false
     id "com.google.protobuf" version "0.8.19" apply false
 }
 
@@ -27,9 +28,10 @@ allprojects {
     dependencyManagement {
         dependencies {
             imports {
-                mavenBom("org.springframework.boot:spring-boot-dependencies:2.6.4")
-                mavenBom "org.testcontainers:testcontainers-bom:1.17.2"
+                mavenBom("org.springframework.boot:spring-boot-dependencies:3.0.1")
+                mavenBom "org.testcontainers:testcontainers-bom:1.17.3"
                 mavenBom "io.grpc:grpc-bom:1.47.0"
+                mavenBom "com.google.protobuf:protobuf-bom:3.21.1"
             }
             dependency("com.google.guava:guava:${Versions.guava}")
             dependency("org.openjdk.jmh:jmh-core:${Versions.jmh}")
@@ -65,6 +67,14 @@ allprojects {
 
             dependency("com.google.code.findbugs:jsr305:${Versions.jsr305}")
             dependency "org.apache.tomcat:annotations-api:6.0.53"
+
+            dependency("io.grpc:grpc-netty:${Versions.grpc}")
+            dependency("io.grpc:grpc-protobuf:${Versions.grpc}")
+            dependency("io.grpc:grpc-stub:${Versions.grpc}")
+            dependency("com.github.tomakehurst:wiremock:${Versions.wiremock}")
+            dependency("io.r2dbc:r2dbc-postgresql:${Versions.r2dbcPostgresql}")
+
+
         }
     }
 
@@ -81,6 +91,7 @@ allprojects {
             force("org.codehaus.jettison:jettison:1.1")
             force("net.java.dev.jna:jna:5.8.0")
             force("com.google.errorprone:error_prone_annotations:2.11.0")
+            force("io.perfmark:perfmark-api:0.25.0")
         }
     }
 }

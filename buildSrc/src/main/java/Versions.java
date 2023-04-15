@@ -34,4 +34,6 @@ public interface Versions {
 
     String protobufVersion = "3.21.2";
 
+    String wiremock = "3.0.0-beta-2";
+    String r2dbcPostgresql = "0.8.13.RELEASE";
 }

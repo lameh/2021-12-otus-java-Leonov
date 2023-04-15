@@ -36,4 +36,10 @@ public class DataStoreR2dbc implements DataStore {
         return messageRepository.findByRoomId(roomId)
                 .delayElements(Duration.of(3, SECONDS), workerPool);
     }
+
+    @Override
+    public Flux<Message> loadMessages() {
+        return messageRepository.findAll()
+                .delayElements(Duration.of(1, SECONDS), workerPool);
+    }
 }
