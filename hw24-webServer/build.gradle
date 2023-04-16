@@ -7,7 +7,7 @@ targetCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     implementation('org.flywaydb:flyway-core')
-    implementation("org.hibernate:hibernate-core")
+    implementation("org.hibernate:hibernate-core:6.2.0.Final")
     implementation('org.postgresql:postgresql')
     implementation('com.zaxxer:HikariCP')
     implementation("ch.qos.logback:logback-classic")
